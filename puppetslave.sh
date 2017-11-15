@@ -1,11 +1,11 @@
 #This is a startup script for assimilating new physical computers
 #Jussi Isosomppi, 2017
 
+cd
+
 setxkbmap fi
 sudo apt-get update
 sudo apt-get install -y git puppet virtualbox vagrant
-
-cd
 
 git config --global user.name "Jussi Isosomppi"
 git config --global user.email "jussi.isosomppi@gmail.com"
