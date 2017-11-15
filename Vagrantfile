@@ -21,10 +21,10 @@ Vagrant.configure(2) do |config|
 	r = rand(36**10).to_s(36)
 	(1..50).each do |i|
 		config.vm.define "slave#{i}" do |slave|
-			slave.vm.hostname = "Slave#{i}-#{r}"
+			slave.vm.hostname = "150mb-#{r}-Slave#{i}"
 			slave.vm.network :forwarded_port, guest: 22, host: 50000+i, id: 'ssh'
 		slave.vm.provider "virtualbox" do |vb|
-			vb.memory = 200
+			vb.memory = 150
 			vb.linked_clone = true
 			vb.customize ["modifyvm", :id, "--usb", "on"]
 			vb.customize ["modifyvm", :id, "--usbehci", "off"]
