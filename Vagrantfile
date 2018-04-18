@@ -1,6 +1,7 @@
 # Multislave vagrant for Puppet
 # Copyright 2017 Tero Karvinen http://TeroKarvinen.com
 # Original source: http://terokarvinen.com/2017/provision-multiple-virtual-puppet-slaves-with-vagrant
+# Loop logic: https://github.com/Tommi852/slavearmy/blob/master/raportti.md#raportti-orja-koneiden-teosta
 # Modified for salt by Jussi Isosomppi, 2018
 
 
