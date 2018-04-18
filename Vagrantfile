@@ -1,6 +1,8 @@
 # Multislave vagrant for Puppet
 # Copyright 2017 Tero Karvinen http://TeroKarvinen.com
+# Original source: http://terokarvinen.com/2017/provision-multiple-virtual-puppet-slaves-with-vagrant
 # Modified for salt by Jussi Isosomppi, 2018
+
 
 $tscript = <<TSCRIPT
 set -o verbose
