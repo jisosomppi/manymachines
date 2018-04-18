@@ -7,8 +7,7 @@ set -o verbose
 echo "See you on http://TeroKarvinen.com"
 apt-get update
 apt-get -y install salt-minion
-grep ^server /etc/salt/minion || echo -e "\n[agent]\nserver=saltmaster\n" |sudo tee -a /etc/salt/minion
-grep saltmaster /etc/hosts || echo -e "\n172.28.171.95 saltmaster\n"|sudo tee -a /etc/hosts
+grep ^server /etc/salt/minion || echo -e "\n[agent]\nmaster:172.28.171.95\n" |sudo tee -a /etc/salt/minion
 
 sudo service salt-minion restart
 TSCRIPT
