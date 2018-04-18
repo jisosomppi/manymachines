@@ -1,16 +1,16 @@
 # Multislave vagrant for Puppet
 # Copyright 2017 Tero Karvinen http://TeroKarvinen.com
+# Modified for salt by Jussi Isosomppi, 2018
 
 $tscript = <<TSCRIPT
 set -o verbose
 echo "See you on http://TeroKarvinen.com"
 apt-get update
-apt-get -y install puppet
-grep ^server /etc/puppet/puppet.conf || echo -e "\n[agent]\nserver=puppetmaster\n" |sudo tee -a /etc/puppet/puppet.conf
-grep puppetmaster /etc/hosts || echo -e "\n172.28.171.215 puppetmaster\n"|sudo tee -a /etc/hosts
-puppet agent --enable
-sudo service puppet start
-sudo service puppet restart
+apt-get -y install salt-minion
+grep ^server /etc/salt/minion || echo -e "\n[agent]\nserver=saltmaster\n" |sudo tee -a /etc/salt/minion
+grep puppetmaster /etc/hosts || echo -e "\n172.28.171.95 saltmaster\n"|sudo tee -a /etc/hosts
+
+sudo service salt-minion restart
 TSCRIPT
 
 Vagrant.configure(2) do |config|
