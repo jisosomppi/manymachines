@@ -6,12 +6,9 @@
 
 
 $tscript = <<TSCRIPT
-set -o verbose
-echo "See you on http://TeroKarvinen.com"
 apt-get update
 apt-get -y install salt-minion
-grep ^master /etc/salt/minion || echo -e "\nmaster: 172.28.171.95\n" |sudo tee -a /etc/salt/minion
-
+echo -e "\nmaster: 172.28.171.95\n" | sudo tee -a /etc/salt/minion
 sudo service salt-minion restart
 TSCRIPT
 
