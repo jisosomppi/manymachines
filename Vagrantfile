@@ -18,12 +18,12 @@ Vagrant.configure(2) do |config|
 	config.vm.usable_port_range = (2200..20000)
 
 	r = rand(36**10).to_s(36)
-	(1..5).each do |i|
+	(1..50).each do |i|
 		config.vm.define "slave#{i}" do |slave|
 			slave.vm.hostname = "Slave#{i}-#{r}"
 			slave.vm.network :forwarded_port, guest: 22, host: 50000+i, id: 'ssh'
 		slave.vm.provider "virtualbox" do |vb|
-			vb.memory = 256
+			vb.memory = 200
 			vb.linked_clone = true
 			vb.customize ["modifyvm", :id, "--usb", "on"]
 			vb.customize ["modifyvm", :id, "--usbehci", "off"]
