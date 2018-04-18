@@ -4,7 +4,6 @@
 # Loop logic: https://github.com/Tommi852/slavearmy/blob/master/raportti.md#raportti-orja-koneiden-teosta
 # Modified for salt by Jussi Isosomppi, 2018
 
-
 $tscript = <<TSCRIPT
 apt-get update
 apt-get -y install salt-minion
