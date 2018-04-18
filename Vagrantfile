@@ -8,7 +8,7 @@ echo "See you on http://TeroKarvinen.com"
 apt-get update
 apt-get -y install salt-minion
 grep ^server /etc/salt/minion || echo -e "\n[agent]\nserver=saltmaster\n" |sudo tee -a /etc/salt/minion
-grep puppetmaster /etc/hosts || echo -e "\n172.28.171.95 saltmaster\n"|sudo tee -a /etc/hosts
+grep saltmaster /etc/hosts || echo -e "\n172.28.171.95 saltmaster\n"|sudo tee -a /etc/hosts
 
 sudo service salt-minion restart
 TSCRIPT
