@@ -8,3 +8,4 @@ Current method for creating new minions is running a Xubuntu/Ubuntu install from
 ```
 wget jisosomppi.me/deadsea.sh && bash deadsea.sh
 ```
+_Above URL is an easily memorable version of https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh_
