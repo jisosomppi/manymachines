@@ -1,4 +1,4 @@
 # manymachines
-An attempt to take over the world with numerous puppet clients
+An attempt to take over the world with numerous salt minions
 
-Report available at https://github.com/jisosomppi/conman/blob/master/README.md#orjakisat-part-1
+Main repository available at: https://github.com/jisosomppi/mgmt
