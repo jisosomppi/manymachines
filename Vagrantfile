@@ -7,7 +7,7 @@
 $tscript = <<TSCRIPT
 apt-get update
 apt-get -y install salt-minion
-echo -e "\nmaster: 172.28.171.95\n" | sudo tee -a /etc/salt/minion
+echo -e "\nmaster: 172.28.171.222\n" | sudo tee -a /etc/salt/minion
 sudo service salt-minion restart
 TSCRIPT
 
@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
 	config.vm.usable_port_range = (2200..20000)
 
 	r = rand(36**10).to_s(36)
-	(1..20).each do |i|
+	(1..10).each do |i|
 		config.vm.define "slave#{i}" do |slave|
 			slave.vm.hostname = "Slave#{i}-#{r}"
 			slave.vm.network :forwarded_port, guest: 22, host: 50000+i, id: 'ssh'
