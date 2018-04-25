@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
 	config.vm.usable_port_range = (2200..20000)
 
 	r = rand(36**6).to_s(36)
-	(1..50).each do |i|
+	(1..60).each do |i| ## 16Gb RAM = Xubuntu install + 60 VM's with 1Gb to spare for stability
 		config.vm.define "slave#{i}" do |slave|
 			slave.vm.hostname = "Rem-#{r}-Slave#{i}"
 			slave.vm.network :forwarded_port, guest: 22, host: 50000+i, id: 'ssh'
