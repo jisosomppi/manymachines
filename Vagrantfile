@@ -5,6 +5,11 @@
 # Modified for salt by Jussi Isosomppi, 2018
 
 $tscript = <<TSCRIPT
+
+echo -e 'Acquire::http::proxy "http://172.28.171.197:8000";\nAcquire::https::proxy "http://172.28.171.197:8000";' \
+ > '/etc/apt/apt.conf.d/30proxy'
+cat /etc/apt/apt.conf.d/30proxy
+
 apt-get update
 apt-get -y install salt-minion
 echo -e "\nmaster: 172.28.171.222\n" | sudo tee -a /etc/salt/minion
