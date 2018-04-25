@@ -5,7 +5,7 @@ cd
 
 setxkbmap fi
 sudo apt-get update
-sudo apt-get install -y git virtualbox vagrant
+sudo apt-get install -y git virtualbox vagrant squid-deb-proxy
 
 git config --global user.name "Jussi Isosomppi"
 git config --global user.email "jussi.isosomppi@gmail.com"
