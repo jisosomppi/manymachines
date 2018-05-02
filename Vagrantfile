@@ -6,7 +6,7 @@
 
 $tscript = <<TSCRIPT
 
-echo -e 'Acquire::http::proxy "http://172.28.172.193:8000";\nAcquire::https::proxy "http://172.28.172.193:8000";' \
+echo -e 'Acquire::http::proxy "http://172.28.171.222:8000";\nAcquire::https::proxy "http://172.28.171.222:8000";' \
  > '/etc/apt/apt.conf.d/30proxy'
 cat /etc/apt/apt.conf.d/30proxy
 
