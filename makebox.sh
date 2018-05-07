@@ -9,7 +9,8 @@ mkdir vagrant
 cd vagrant/
 
 # initialize new base box
-vagrant init minimal/trusty64
+wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfile_base
+cp Vagrantfile_base Vagrantfile
 vagrant up
 
 # customize base box
