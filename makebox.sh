@@ -20,3 +20,5 @@ vagrant box add rdyslave rdyslave.box
 # remove base box
 vagrant destroy
 rm Vagrantfile
+
+cd
