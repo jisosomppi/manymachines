@@ -6,12 +6,8 @@
 
 $tscript = <<TSCRIPT
 
-apt-get update
-apt-get -y install salt-minion
 sudo service salt-minion stop
 sudo rm /etc/salt/minion_id
-sudo rm /etc/salt/minion
-echo -e "master: 172.28.171.118" | sudo tee /etc/salt/minion
 sudo service salt-minion start
 
 TSCRIPT
