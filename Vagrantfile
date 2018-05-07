@@ -6,13 +6,13 @@
 
 $tscript = <<TSCRIPT
 
-echo -e 'Acquire::http::proxy "http://172.28.171.222:8000";\nAcquire::https::proxy "http://172.28.171.222:8000";' \
+echo -e 'Acquire::http::proxy "http://172.28.171.118:8000";\nAcquire::https::proxy "http://172.28.171.118:8000";' \
  > '/etc/apt/apt.conf.d/30proxy'
 cat /etc/apt/apt.conf.d/30proxy
 
 apt-get update
 apt-get -y install salt-minion
-echo -e "\nmaster: 172.28.171.222\n" | sudo tee -a /etc/salt/minion
+echo -e "\nmaster: 172.28.171.118\n" | sudo tee -a /etc/salt/minion
 sudo service salt-minion restart
 TSCRIPT
 
