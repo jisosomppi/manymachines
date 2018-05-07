@@ -9,7 +9,7 @@ mkdir vagrant
 cd vagrant/
 
 # initialize new base box
-wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfile_base
+wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfile_basebox
 cp Vagrantfile_base Vagrantfile
 vagrant up
 
