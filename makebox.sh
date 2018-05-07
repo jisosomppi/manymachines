@@ -13,9 +13,6 @@ wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfil
 cp Vagrantfile_base Vagrantfile
 vagrant up
 
-# customize base box
-vagrant ssh -- -t 'sudo apt-get update; sudo apt-get install -y salt-minion; sudo service salt-minion stop; sudo rm /etc/salt/minion; echo "master: 172.28.171.118" | sudo tee /etc/salt/minion; sudo service salt-minion start; sudo apt-get clean; cat /dev/null > ~/.bash_history && history -c && exit'
-
 # create new box and make it usable
 vagrant package --output rdyslave.box
 vagrant box add rdyslave rdyslave.box
