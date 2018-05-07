@@ -18,7 +18,7 @@ vagrant package --output rdyslave.box
 vagrant box add rdyslave rdyslave.box
 
 # remove base box
-vagrant destroy
+vagrant destroy -f
 rm Vagrantfile
 
 cd
