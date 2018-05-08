@@ -6,11 +6,10 @@
 
 cd
 mkdir vagrant
+cp manymachines/Vagrantfile_basebox vagrant/Vagrantfile
 cd vagrant/
 
 # initialize new base box
-wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfile_basebox
-cp Vagrantfile_base Vagrantfile
 vagrant up
 
 # create new box and make it usable
