@@ -2,7 +2,7 @@
 ## Jussi Isosomppi, 2018
 
 cd
+cp manymachines/Vagrantfile_rdyslave vagrant/Vagrantfile
 cd vagrant/
-wget https://raw.githubusercontent.com/jisosomppi/manymachines/master/Vagrantfile_rdyslave
-cp Vagrantfile_rdyslave Vagrantfile
+
 vagrant up
