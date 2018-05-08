@@ -1,3 +1,8 @@
+## Vagrantfile for setting up a new base box
+## Aims to reduce redundant work, does as much as possible before creating masses of VMs
+## Uses apt-deb-proxy to further reduce download times
+## Jussi Isosomppi, 2018
+
 $tscript = <<TSCRIPT
 
 echo -e 'Acquire::http::proxy "http://172.28.171.118:8000";\nAcquire::https::proxy "http://172.28.171.118:8000";' \
