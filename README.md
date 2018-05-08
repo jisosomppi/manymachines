@@ -8,7 +8,9 @@ Main repository available at: https://github.com/jisosomppi/mgmt
 Current method for creating new salt colonies is installing Xubuntu and running:
 
 ```
-wget jisosomppi.me/deadsea.sh && bash deadsea.sh
+wget jisosomppi.me/deadsea.sh
+bash deadsea.sh
+
 ```
 
 The above script: 
