@@ -13,6 +13,19 @@ bash deadsea.sh
 
 ```
 
+To reset computers to blank state:
+```
+cd ~/vagrant/
+vagrant destroy -f
+vagrant box remove rdyslave
+cd
+rm -rf ~/vagrant/
+rm -rf ~/manymachines/
+rm -rf ~/Virtualbox VMs
+```
+
+_Above URL is just an easily memorable version of https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh_
+
 The above script: 
 * clones this repository
 * installs required programs
@@ -32,4 +45,10 @@ After the base box is made, the next script (`clonebox.sh`) starts creating new 
 
 *Note: I thought about creating VMs simultaneously, but that's not a supported feature withing Virtualbox*
 
-_Above URL is an easily memorable version of https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh_
+## First round of testing
+
+I started my first round of testing by installing Xubuntu 16.04.3 on around 15 computers and running my setup script on all of them.
+
+School computers seem to implode at around 45-55 VMs, despite them having more than enough resources available. For some reason, some of the VMs eat up CPU resources, which in turn causes the host computer to hang and stop creating VMs. Lack of memory on my salt-master is another issue - I had to shut down my WordPress site in order to make enough memory available for even the simplest commands (`sudo salt '*' test.ping --summary`). Lack of memory on the host was also causing interesting errors while attempting to run salt commands.
+
+In the end of round one, I had around 550 minions listed on the master, but a large part of them was unresponsive due to lack of resources on the hosts.
