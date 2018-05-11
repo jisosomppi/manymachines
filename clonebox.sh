@@ -4,8 +4,8 @@
 
 # move premade Vagrantfile for clones and rename it
 cd
-cp manymachines/Vagrantfile_rdyslave vagrant/Vagrantfile
-cd vagrant/
+cp ~/manymachines/Vagrantfile_rdyslave ~/vagrant/Vagrantfile
+cd ~/vagrant/
 
 # start creating 100 VMs
 vagrant up
