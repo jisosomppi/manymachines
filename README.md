@@ -22,6 +22,7 @@ cd
 rm -rf ~/vagrant/
 rm -rf ~/manymachines/
 rm -rf ~/Virtualbox VMs
+
 ```
 
 _Above URL is just an easily memorable version of https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh_
