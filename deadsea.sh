@@ -7,7 +7,7 @@ sudo apt-get install git vagrant virtualbox ssh
 
 cd
 git clone https://github.com/jisosomppi/manymachines.git
-cd manymachines/
+cd ~/manymachines/
 
 # Run script to setup new basebox with updated packages and salt-minion with correct master IP
 bash makebox.sh
