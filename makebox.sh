@@ -8,8 +8,8 @@ cd
 mkdir vagrant
 
 # move premade basebox Vagrantfile and rename it
-cp manymachines/Vagrantfile_basebox vagrant/Vagrantfile
-cd vagrant/
+cp ~/manymachines/Vagrantfile_basebox ~/vagrant/Vagrantfile
+cd ~/vagrant/
 
 # initialize new base box
 vagrant up
