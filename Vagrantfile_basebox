@@ -10,7 +10,7 @@ echo -e 'Acquire::http::proxy "http://172.28.171.95:8000";\nAcquire::https::prox
 cat /etc/apt/apt.conf.d/30proxy
 
 apt-get update
-apt-get -y install salt-minion virtualbox-guest-utils
+apt-get -y install salt-minion virtualbox-guest-utils swapspace
 sudo service salt-minion stop
 sudo rm /etc/salt/minion
 echo "master: jisosomppi.me" | sudo tee /etc/salt/minion
