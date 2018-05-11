@@ -5,7 +5,7 @@
 
 $tscript = <<TSCRIPT
 
-echo -e 'Acquire::http::proxy "http://172.28.171.95:8000";\nAcquire::https::proxy "http://172.28.171.95:8000";' \
+echo -e 'Acquire::http::proxy "http://172.28.230.7:8000";\nAcquire::https::proxy "http://172.28.230.7:8000";' \
  > '/etc/apt/apt.conf.d/30proxy'
 cat /etc/apt/apt.conf.d/30proxy
 
@@ -13,7 +13,7 @@ apt-get update
 apt-get -y install salt-minion virtualbox-guest-utils swapspace
 sudo service salt-minion stop
 sudo rm /etc/salt/minion
-echo "master: jisosomppi.me" | sudo tee /etc/salt/minion
+echo "master: 172.28.230.7" | sudo tee /etc/salt/minion
 sudo service salt-minion start
 cat /dev/null > ~/.bash_history && history -c
 TSCRIPT
