@@ -21,7 +21,8 @@ vagrant box remove rdyslave
 cd
 rm -rf ~/vagrant/
 rm -rf ~/manymachines/
-rm -rf ~/VirtualBox VMs
+rm -rf VirtualBox\ VMs/
+
 
 ```
 
