@@ -7,14 +7,14 @@ Main repository available at: https://github.com/jisosomppi/mgmt
 ## Usage
 Current method for creating new salt colonies is installing Xubuntu and running:
 
-```
+``` bash
 wget jisosomppi.me/deadsea.sh
 bash deadsea.sh
 
 ```
 
 To reset computers to blank state:
-```
+``` bash
 cd ~/vagrant/
 vagrant destroy -f
 vagrant box remove rdyslave
