@@ -54,3 +54,5 @@ I started my first round of testing by installing Xubuntu 16.04.3 on around 15 c
 School computers seem to implode at around 45-55 VMs, despite them having more than enough resources available. For some reason, some of the VMs eat up CPU resources, which in turn causes the host computer to hang and stop creating VMs. Lack of memory on my salt-master is another issue - I had to shut down my WordPress site in order to make enough memory available for even the simplest commands (`sudo salt '*' test.ping --summary` - sadly, the summary counts unresponsive minions as functional despite there being a separate line for them in the output). Lack of memory on the host was also causing interesting errors while attempting to run salt commands.
 
 In the end of round one, I had around 560 minions approved on the master, but a large part of them was unresponsive due to lack of resources on the hosts. 
+
+**Update: Apparently the high CPU load is due to the VMs running out of memory. Moving data to the swap space is CPU intensive and causes the host computer to stall. Attempting to fix by increasing VM RAM slightly.**
