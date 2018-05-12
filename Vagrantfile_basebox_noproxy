@@ -1,0 +1,24 @@
+## Vagrantfile for setting up a new base box
+## Aims to reduce redundant work, does as much as possible before creating masses of VMs
+## Uses apt-deb-proxy to further reduce download times
+## Jussi Isosomppi, 2018
+
+$tscript = <<TSCRIPT
+
+apt-get update
+apt-get -y install salt-minion virtualbox-guest-utils
+sudo service salt-minion stop
+sudo rm /etc/salt/minion
+echo "master: 172.28.230.7" | sudo tee /etc/salt/minion
+sudo service salt-minion start
+cat /dev/null > ~/.bash_history && history -c
+TSCRIPT
+
+Vagrant.configure(2) do |config|
+        config.vm.box = "minimal/trusty64"
+        config.vm.provision "shell", inline: $tscript
+        config.vm.provider "virtualbox" do |vb|
+                vb.customize ["modifyvm", :id, "--usb", "on"]
+                vb.customize ["modifyvm", :id, "--usbehci", "off"]
+        end
+end
