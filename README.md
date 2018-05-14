@@ -17,6 +17,10 @@ bash deadsea.sh
 
 _Above URL is just an easily memorable version of [https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh](https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh)
 
+_The IP address for the salt master is defined in Vagrantfile_basebox_
+
+_The target amount of VMs per host is defined Vagrantfile_rdyslave_
+
 
 To reset computers to blank state:
 ``` bash
@@ -46,15 +50,13 @@ The base box is created with the script `basebox.sh` using a minimal/trusty64 (U
 This VM is then packaged into a new base box, which is added to Vagrant so it can be reused.
 
 ## Making minions
-After the base box is made, the next script (`clonebox.sh`) starts creating new VMs. These new installs already have all the needed packages, as well as the master IP address setup. Each physical computer also gets a random 6 character long alphanumeric string, which is used to identify each physical host. This string is inserted into the VM hostnames to make sure no two Salt minions have the same ID. For some reason though, the minion ID didn't automatically change to the new hostname after VM creation (it retained the `trusty64` hostname of the base box), so I just forced the deletion of the previous ID and confirmed that restarting the salt-minion service creates a new ID file (`/etc/salt/minion_id`). This is the smallest amount of commands in the provision script that I could think of, which will still give me functional salt-minions. This should lead to the fastest possible startup time per VM.
-
-*Note: I thought about creating VMs simultaneously, but that's not a supported feature withing Virtualbox*
+After the base box is made, the next script (`clonebox.sh`) starts creating new VMs. These new installs already have all the needed packages, as well as the master IP address setup. Each physical computer also gets a random 6 character long alphanumeric string, which is used to identify each physical host. This string is inserted into the VM hostnames to make sure no two Salt minions have the same ID. For some reason though, the minion ID didn't automatically change to the new hostname after VM creation (it retained the `trusty64` hostname of the base box, even after restarting salt-minion), so I just forced the deletion of the previous ID and confirmed that restarting the salt-minion service creates a new ID file (`/etc/salt/minion_id`). This is the smallest amount of commands in the provision script that I could think of, which will still give me functional salt-minions. This should lead to the fastest possible startup time per VM.
 
 ## First round of testing
 
-I started my first round of testing by installing Xubuntu 16.04.3 on around 15 computers and running my setup script on all of them.
+I started the first round of testing by installing Xubuntu 16.04.3 on around 15 computers and running my setup script on all of them.
 
-School computers seem to implode at around 45-55 VMs, despite them having more than enough resources available. For some reason, some of the VMs eat up CPU resources, which in turn causes the host computer to hang and stop creating VMs. Lack of memory on my salt-master is another issue - I had to shut down my WordPress site in order to make enough memory available for even the simplest commands (`sudo salt '*' test.ping --summary` - sadly, the summary counts unresponsive minions as functional despite there being a separate line for them in the output). Lack of memory on the host was also causing interesting errors while attempting to run salt commands.
+School computers seem to implode at around 45-55 VMs, despite them having more than enough resources available. For some reason, some of the VMs eat up CPU resources, which in turn causes the host computer to hang and stop creating VMs. Lack of memory on my salt-master is another issue - I was running the salt master on my server, and had to shut down my WordPress site in order to make enough memory available for even the simplest commands (`sudo salt '*' test.ping --summary` - sadly, the summary counts unresponsive minions as functional despite there being a separate line for them in the output). Lack of memory on the host was also causing interesting errors while attempting to run salt commands.
 
 In the end of round one, I had around 560 minions approved on the master, but a large part of them was unresponsive due to lack of resources on the hosts. 
 
