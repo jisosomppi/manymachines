@@ -1,7 +1,8 @@
 # manymachines
 An attempt to take over the world with numerous salt minions, or
 
-***"How to run 2000+ VMs within your line of sight"***
+***"How to run 2000+ VMs within your line of sight"***  
+[(List of controlled minions here)](https://github.com/jisosomppi/manymachines/blob/master/minionlist2k)
 
 This is my entry to a contest held during a Haaga-Helia course, for which the main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
 
