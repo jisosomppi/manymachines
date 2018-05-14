@@ -4,7 +4,7 @@ An attempt to take over the world with numerous salt minions, or
 ***"How to run 2000+ VMs within your line of sight"***  
 [(List of controlled minions here)](https://github.com/jisosomppi/manymachines/blob/master/minionlist2k)
 
-This is my entry to a contest held during a Haaga-Helia course, for which the main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
+This is my answer to a challenge from [Tero Karvinen](http://terokarvinen.com), issued during a Haaga-Helia course, for which the main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
 
 
 ## Usage
@@ -83,3 +83,10 @@ To reduce the load on both the master and the minions, using the -b or --batch-s
 After running the install script on 25 machines (plus 120-something VMs on a server machine), I finally reached my target and hit 2000 VMs. This means that each host was running approximately 78 VMs at a time. With 80 VMs running, the memory use of the physical hosts was around 14,5 / 15,5 Gb, leaving some breathing room to ensure host stability. 
 
 ***The final result was 2071 VMs targeted, out of which 2021 answered to a `test.ping` at the same time.*** 
+
+## Further improvement
+
+This is by no means a perfect execution, and has many things that could be improved in the future. The ones that appear most important to me are:
+* Using containers or other similar methods to further reduce resource draw
+* Making the amount of VMs scale based on the host computer, with some sort of logic for making sure the machine remains functional
+* Setting the host computers up for centralized management as well, in this case I realized this after using the same hostname for all 25 host computers (username+computer model, the default hostname) and didn't have the time to fix my mistake
