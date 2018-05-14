@@ -16,7 +16,7 @@ bash deadsea.sh
 
 ```
 
-_Above URL is just an easily memorable version of [https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh](https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh)
+_Above URL is just an easily memorable link for [the script in this repository,](https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh) all changes are made to files in this repository._
 
 _The IP address for the salt master is defined in Vagrantfile_basebox_
 
