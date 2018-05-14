@@ -1,7 +1,9 @@
 # manymachines
-An attempt to take over the world with numerous salt minions
+An attempt to take over the world with numerous salt minions, or
 
-Main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
+***"How to run 2000+ VMs within your line of sight"***
+
+This is my entry to a contest held during a Haaga-Helia course, for which the main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
 
 
 ## Usage
@@ -12,6 +14,9 @@ wget jisosomppi.me/deadsea.sh
 bash deadsea.sh
 
 ```
+
+_Above URL is just an easily memorable version of [https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh](https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh)
+
 
 To reset computers to blank state:
 ``` bash
@@ -26,8 +31,6 @@ rm -rf VirtualBox\ VMs/
 
 ```
 
-_Above URL is just an easily memorable version of [https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh](https://raw.githubusercontent.com/jisosomppi/manymachines/master/deadsea.sh)
-
 The above script: 
 * clones this repository
 * installs required programs
@@ -38,7 +41,7 @@ The above script:
 * attempts to create 100 VMs per physical machine
 
 ## Base box
-The base box is created with the script `basebox.sh` using a minimal/trusty64 (Ubuntu 14.04 with minimal clutter) VM as a base, which then gets updated packages so they only need to be fetched once per physical machine, instead of once per VM. The base box gets the packages from the master, which is also configured as an apt-deb-proxy. This saves tons of time in the creation of VMs, since the fetching of packages (even from the proxy) was taking most of the time while bringing up new VMs.
+The base box is created with the script `basebox.sh` using a minimal/trusty64 (Ubuntu 14.04 with minimal clutter) VM as a base, which then gets updated packages so they only need to be fetched once per physical machine, instead of once per VM. To shave seconds off the load times, I set up and apt-deb-proxy on my master server as well. This saves tons of time in the creation of VMs, since the fetching of packages (even from the proxy) was taking most of the time while bringing up new VMs.
 
 This VM is then packaged into a new base box, which is added to Vagrant so it can be reused.
 
@@ -56,3 +59,24 @@ School computers seem to implode at around 45-55 VMs, despite them having more t
 In the end of round one, I had around 560 minions approved on the master, but a large part of them was unresponsive due to lack of resources on the hosts. 
 
 **Update: Apparently the high CPU load is due to the VMs running out of memory. Moving data to the swap space is CPU intensive and causes the host computer to stall. Attempting to fix by increasing VM RAM slightly.**
+
+## Second and final round of testing 
+
+### Process
+After allocating slightly more RAM per VM, I managed to get 80 VMs running on (nearly) each physical host. Running the script wasn't a 100% solid task, and I had to manually restart the `vagrant up` process on around 5 of the 25 machines in room 5004. In most of the cases this was caused by a failure in the Vagrant host <-> VM SSH connection, an error that didn't reoccur during another `vagrant up` run. 
+
+In one case, the process was stopped due to the requested port (50050) being in use on the host computer. I didn't find out what process was using it, but a new run of `vagrant up` passed without errors.
+
+The surprising part was that the main cause of bad results or failed commands wasn't actually the minions, but the master! I was running my master on the same server machine as the 120+ minions, and issuing a command to all of them at the same time spiked the CPU use across all 8 cores to 100%. During this time, it seemed that some minions had tried to return their results to the master, but the master wasn't able to log the responses. This in turn meant that the master decided that those VMs hadn't answered to the commands.
+
+### Tricks
+To simplify tracking, it's a good idea to use the --summary modifier on salt commands, as it returns the number of targeted/responding minions. *Extra usefulness: add **time** to the beginning of the commands*
+
+My salt-master started to timeout with 600+ minions, so I needed to improve its performance. This is done easily, by increasing the `worker_threads` value in `/etc/salt/master`, in my case I incrementally raised the value from the default 5 all the way up to 20. *Rule of thumb: 1 thread per 100 minions?*
+
+To reduce the load on both the master and the minions, using the -b or --batch-size modifier should limit simultaneous commands to a specified amount. Although for me, using this modifier caused the command to return nothing at all.
+
+### Results
+After running the install script on 25 machines (plus 120-something VMs on a server machine), I finally reached my target and hit 2000 VMs. This means that each host was running approximately 78 VMs at a time. With 80 VMs running, the memory use of the physical hosts was around 14,5 / 15,5 Gb, leaving some breathing room to ensure host stability. 
+
+***The final result was 2071 VMs targeted, out of which 2021 answered to a `test.ping` at the same time.*** 
