@@ -2,7 +2,9 @@
 An attempt to take over the world with numerous salt minions, or
 
 ***"How to run 2000+ VMs within your line of sight"***  
-[(List of controlled minions here)](https://github.com/jisosomppi/manymachines/blob/master/minionlist2k)
+[(List of controlled minions here)](https://github.com/jisosomppi/manymachines/blob/master/extras/minionlist2k)
+
+![Final result](https://github.com/jisosomppi/manymachines/blob/master/images/IMG_20180514_163012.jpg?raw=true)
 
 This is my answer to a challenge from [Tero Karvinen](http://terokarvinen.com), issued during a Haaga-Helia course, for which the main repository available at: [https://github.com/jisosomppi/mgmt](https://github.com/jisosomppi/mgmt)
 
@@ -65,6 +67,8 @@ In the end of round one, I had around 560 minions approved on the master, but a 
 
 ## Second and final round of testing 
 
+![Creating 25 * 80 Vagrant VMs](https://github.com/jisosomppi/manymachines/blob/master/images/IMG_20180514_154231.jpg?raw=true)
+
 ### Process
 After allocating slightly more RAM per VM, I managed to get 80 VMs running on (nearly) each physical host. Running the script wasn't a 100% solid task, and I had to manually restart the `vagrant up` process on around 5 of the 25 machines in room 5004. In most of the cases this was caused by a failure in the Vagrant host <-> VM SSH connection, an error that didn't reoccur during another `vagrant up` run. 
 
@@ -80,7 +84,8 @@ My salt-master started to timeout with 600+ minions, so I needed to improve its 
 To reduce the load on both the master and the minions, using the -b or --batch-size modifier should limit simultaneous commands to a specified amount. Although for me, using this modifier caused the command to return nothing at all.
 
 ### Results
-After running the install script on 25 machines (plus 120-something VMs on a server machine), I finally reached my target and hit 2000 VMs. This means that each host was running approximately 78 VMs at a time. With 80 VMs running, the memory use of the physical hosts was around 14,5 / 15,5 Gb, leaving some breathing room to ensure host stability. 
+![Resource usage with 80 VMs running](https://github.com/jisosomppi/manymachines/blob/master/images/IMG_20180514_160759.jpg?raw=true)
+After running the install script on 25 machines (plus 120-something VMs on a server machine), I finally reached my target and hit 2000 VMs. This means that each host was running approximately 78 VMs at a time. With 80 VMs running, the memory use of the physical hosts was around 14,5 / 15,5 Gb, leaving some breathing room to ensure host stability.
 
 ***The final result was 2071 VMs targeted, out of which 2021 answered to a `test.ping` at the same time.*** 
 
