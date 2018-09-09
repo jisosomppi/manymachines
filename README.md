@@ -13,7 +13,7 @@ This is my answer to a challenge from [Tero Karvinen](http://terokarvinen.com), 
 Current method for creating new salt colonies is installing Xubuntu and running:
 
 ``` bash
-wget jisosomppi.me/deadsea.sh
+wget ~~jisosomppi.me/deadsea.sh~~ ## No longer supported
 bash deadsea.sh
 
 ```
